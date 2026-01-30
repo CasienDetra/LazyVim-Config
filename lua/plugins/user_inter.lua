@@ -63,40 +63,9 @@ return {
       local lualine = require("lualine")
       local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
-      -- local colors = {
-      --   color0 = "#092236",
-      --   color1 = "#ff5874",
-      --   color2 = "#c3ccdc",
-      --   color3 = "#1c1e26",
-      --   color6 = "#a1aab8",
-      --   color7 = "#828697",
-      --   color8 = "#ae81ff",
-      -- }
-      -- local my_lualine_theme = {
-      --   replace = {
-      --     a = { fg = colors.color0, bg = colors.color1, gui = "bold" },
-      --     b = { fg = colors.color2, bg = colors.color3 },
-      --   },
-      --   inactive = {
-      --     a = { fg = colors.color6, bg = colors.color3, gui = "bold" },
-      --     b = { fg = colors.color6, bg = colors.color3 },
-      --     c = { fg = colors.color6, bg = colors.color3 },
-      --   },
-      --   normal = {
-      --     a = { fg = colors.color0, bg = colors.color7, gui = "bold" },
-      --     b = { fg = colors.color2, bg = colors.color3 },
-      --     c = { fg = colors.color2, bg = colors.color3 },
-      --   },
-      --   visual = {
-      --     a = { fg = colors.color0, bg = colors.color8, gui = "bold" },
-      --     b = { fg = colors.color2, bg = colors.color3 },
-      --   },
-      --   insert = {
-      --     a = { fg = colors.color0, bg = colors.color2, gui = "bold" },
-      --     b = { fg = colors.color2, bg = colors.color3 },
-      --   },
-      -- }
-
+      -- +-------------------------------------------------+
+      -- | A | B | C                             X | Y | Z |
+      -- +-------------------------------------------------+
       local mode = {
         "mode",
         fmt = function(str)
@@ -205,5 +174,46 @@ return {
       enable_var_usage = true,
       enable_tailwind = true,
     },
+  },
+  -- indent blankline replace indent from snacks
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    enabled = false,
+    main = "ibl",
+    config = function()
+      vim.opt.termguicolors = true
+      vim.opt.list = false
+      -- vim.opt.listchars:append "space:⋅"
+      -- vim.opt.listchars:append "eol:↴"
+
+      local highlight = {
+        "IndentBlanklineIndent1",
+        "IndentBlanklineIndent2",
+        "IndentBlanklineIndent3",
+        "IndentBlanklineIndent4",
+        "IndentBlanklineIndent5",
+        "IndentBlanklineIndent6",
+      }
+
+      local hooks = require("ibl.hooks")
+      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+        vim.api.nvim_set_hl(0, "IndentBlanklineIndent1", { fg = "#E06C75" })
+        vim.api.nvim_set_hl(0, "IndentBlanklineIndent2", { fg = "#E5C07B" })
+        vim.api.nvim_set_hl(0, "IndentBlanklineIndent3", { fg = "#98C379" })
+        vim.api.nvim_set_hl(0, "IndentBlanklineIndent4", { fg = "#56B6C2" })
+        vim.api.nvim_set_hl(0, "IndentBlanklineIndent5", { fg = "#61AFEF" })
+        vim.api.nvim_set_hl(0, "IndentBlanklineIndent6", { fg = "#C678DD" })
+      end)
+
+      hooks.register(hooks.type.ACTIVE, function(bufnr)
+        return vim.opt_local.filetype:get() ~= "go"
+      end)
+
+      require("ibl").setup({
+        indent = { char = "¦", highlight = highlight },
+        whitespace = { highlight = highlight, remove_blankline_trail = false },
+        scope = { enabled = true, show_start = true },
+      })
+    end,
   },
 }
