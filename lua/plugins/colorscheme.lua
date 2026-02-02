@@ -43,7 +43,7 @@ return {
           --     colors.fg_sidebar = fg_dark
         end,
       })
-      vim.cmd("colorscheme tokyonight")
+      -- vim.cmd("colorscheme tokyonight")
       -- NOTE: Auto switch to tokyonight for markdown files only
       -- vim.api.nvim_create_autocmd("FileType", {
       --     pattern = { "markdown" },
@@ -59,5 +59,14 @@ return {
       --     end,
       -- })
     end,
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = true,
+    opts = {
+      contrast = "hard",
+      transparent_mode = true,
+    },
   },
 }
