@@ -93,7 +93,7 @@ return {
       lualine.setup({
         icons_enabled = true,
         options = {
-          theme = "auto",
+          theme = "gruvbox",
           -- component_separators = { left = "|", right = "|" },
           component_separators = { left = "", right = "" },
           -- section_separators = { left = "|", right = "" },
@@ -144,7 +144,7 @@ return {
             " ",
             { filename, gui = modified and "bold,italic" or "bold" },
             " ",
-            guibg = "#04406e",
+            guibg = "#82A497",
           }
         end,
       })
