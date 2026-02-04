@@ -213,7 +213,7 @@ return {
             behavior = cmp.ConfirmBehavior.Insert
           end
         end
-        cmp.confirm({ select = true, behavior = behavior })
+        cmp.confirm({ select = false, behavior = behavior })
       end
 
       -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
@@ -240,9 +240,9 @@ return {
           -- look at `toggle_ghost_text()` function below.
           ghost_text = false,
         },
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-        },
+        -- completion = {
+        --   completeopt = "menu,menuone,noinsert",
+        -- },
         window = {
           documentation = {
             border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -288,9 +288,9 @@ return {
 
         -- NOTE: ! Experimenting with Customized Mappings ! --
         mapping = cmp.mapping.preset.insert({
-          -- ['<BS>'] = cmp.mapping(function(_fallback)
-          --     smart_bs()
-          -- end, { 'i', 's' }),
+          ["<BS>"] = cmp.mapping(function(_fallback)
+            smart_bs()
+          end, { "i", "s" }),
 
           ["<C-e>"] = cmp.mapping.abort(), -- close completion window
           ["<C-d>"] = cmp.mapping(function()
@@ -299,12 +299,8 @@ return {
 
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-j>"] = cmp.mapping(select_next_item),
-          ["<C-k>"] = cmp.mapping(select_prev_item),
           ["<C-n>"] = cmp.mapping(select_next_item),
           ["<C-p>"] = cmp.mapping(select_prev_item),
-          ["<Down>"] = cmp.mapping(select_next_item),
-          ["<Up>"] = cmp.mapping(select_prev_item),
 
           ["<C-y>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -315,14 +311,15 @@ return {
             end
           end, { "i", "s" }),
 
-          ["<CR>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              local entry = cmp.get_selected_entry()
-              confirm(entry)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
+          ["<CR>"] = cmp.mapping.confirm({ select = false }),
+          -- ["<CR>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     local entry = cmp.get_selected_entry()
+          --     confirm(entry)
+          --   else
+          --     fallback()
+          --   end
+          -- end, { "i", "s" }),
 
           ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
