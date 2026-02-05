@@ -1,16 +1,9 @@
 return {
   -- disable noice cmdline
-  {
-    "folke/noice.nvim",
-
-    enabled = false,
-  },
+  { "folke/noice.nvim", 
+enabled = false },
   -- rainbow bracket
-  {
-    "HiPhish/rainbow-delimiters.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function() end,
-  },
+  { "HiPhish/rainbow-delimiters.nvim", event = { "BufReadPre", "BufNewFile" }, config = function() end },
   -- snack
   {
     "folke/snacks.nvim",
@@ -21,15 +14,8 @@ return {
           {
             -- This inner table creates a horizontal layout (panes)
             { section = "header" },
-            -- {
-            --   -- right Column: Menu
-            --   -- icon = " ",
-            --   -- title = "Menu",
-            --   section = "keys",
-            --   pane = 1,
-            --   gap = 1,
-            --   padding = 1,
-            -- },
+            -- { -- right Column: Menu -- icon = " ", -- title = "Menu", section =
+            -- "keys", pane = 1, gap = 1, padding = 1, },
             {
               -- left Column: ASCII Art (terminak with ascii-image-converter)
               pane = 2,
