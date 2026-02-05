@@ -25,6 +25,11 @@ return {
       formatters_by_ft = {
         php = { "pint" },
       },
+      formatters = {
+        pint = {
+          stdin = false,
+        },
+      },
     },
   },
 }
