@@ -222,14 +222,14 @@ return {
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
-          { name = "path" },
+          -- { name = "path" },
           { name = "cmdline" },
           {
-            name = "buffer",
-            option = {
-              max_item_count = 30,
-              keyword_length = 1,
-            },
+            -- name = "buffer",
+            -- option = {
+            --   max_item_count = 30,
+            --   keyword_length = 1,
+            -- },
           },
         }),
       })
