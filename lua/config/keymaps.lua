@@ -17,3 +17,8 @@ vim.keymap.set("n", "<M-down>", "ddp")
 vim.keymap.set("n", "<M-up>", "ddkP")
 vim.keymap.set("v", "<M-up>", "xkP`[V`]")
 vim.keymap.set("v", "<M-down>", "xk`[V`]`")
+
+-- explorer
+vim.keymap.set("n", "<leader>-", function()
+  vim.cmd("Ex")
+end)
