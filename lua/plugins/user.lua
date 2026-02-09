@@ -1,7 +1,6 @@
 return {
   -- disable noice cmdline
-  { "folke/noice.nvim", 
-enabled = false },
+  { "folke/noice.nvim", enabled = false },
   -- rainbow bracket
   { "HiPhish/rainbow-delimiters.nvim", event = { "BufReadPre", "BufNewFile" }, config = function() end },
   -- snack
@@ -57,7 +56,8 @@ enabled = false },
         fmt = function(str)
           -- return ' '
           -- displays only the first character of the mode
-          return " " .. str
+          -- return " " .. str
+          return " " .. str
         end,
       }
 
