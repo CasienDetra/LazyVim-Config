@@ -6,4 +6,4 @@ debug
 foo.*
 *.log
 data
-/lua/plugins/obsidian.lua
+lua/plugins/obsidian.lua
