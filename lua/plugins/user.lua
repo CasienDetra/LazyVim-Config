@@ -57,7 +57,7 @@ return {
           -- return ' '
           -- displays only the first character of the mode
           -- return " " .. str
-          return " " .. str
+          -- return " " .. str
         end,
       }
 
