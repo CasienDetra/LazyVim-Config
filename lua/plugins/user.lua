@@ -79,7 +79,7 @@ return {
       lualine.setup({
         icons_enabled = true,
         options = {
-          theme = "gruvbox",
+          theme = "auto",
           -- component_separators = { left = "|", right = "|" },
           component_separators = { left = "", right = "" },
           -- section_separators = { left = "|", right = "" },
