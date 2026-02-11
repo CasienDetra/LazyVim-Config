@@ -60,6 +60,7 @@ return {
       -- })
     end,
   },
+  -- gruvbox
   {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
@@ -67,6 +68,15 @@ return {
     opts = {
       contrast = "hard",
       transparent_mode = true,
+    },
+  },
+  -- solarized osaka
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
     },
   },
 }
