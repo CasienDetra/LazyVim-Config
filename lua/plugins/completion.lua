@@ -239,7 +239,7 @@ return {
         experimental = {
           -- HACK: experimenting with ghost text
           -- look at `toggle_ghost_text()` function below.
-          ghost_text = false,
+          ghost_text = true,
         },
         -- completion = {
         --   completeopt = "menu,menuone,noinsert",
