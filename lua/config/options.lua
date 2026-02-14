@@ -9,7 +9,8 @@ vim.opt.completeopt = "menuone,noinsert" -- Completion options
 vim.opt.autoindent = true
 vim.opt.ignorecase = true -- Case insensitive search
 vim.opt.smartcase = true -- Case sensitive if uppercase in search
-vim.opt.hlsearch = false -- Don't highlight search results
+vim.opt.smartindent = true -- Case sensitive if uppercase in search
+vim.opt.hlsearch = true -- Don't highlight search results
 vim.opt.shortmess:append("c")
 vim.opt.cmdheight = 0
 vim.opt.fillchars = {
@@ -22,8 +23,8 @@ vim.o.expandtab = true
 
 -- vim.opt.number =
 -- vim.opt.relativenumber = false
--- vim.diagnostic.config({
---   virtual_lines = true,
--- })
+vim.diagnostic.config({
+  virtual_lines = true,
+})
 vim.opt.fillchars =
   { vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " }
