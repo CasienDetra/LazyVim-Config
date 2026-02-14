@@ -1,6 +1,24 @@
 return {
   -- disable noice cmdline
-  { "folke/noice.nvim", enabled = false },
+  {
+    "folke/noice.nvim",
+    enabled = true,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      local noice = require("noice")
+
+      noice.setup({
+        cmdline = {
+          enabled = false,
+        },
+        messages = {
+          enabled = false,
+        },
+      })
+    end,
+  },
   -- rainbow bracket
   { "HiPhish/rainbow-delimiters.nvim", event = { "BufReadPre", "BufNewFile" }, config = function() end },
   -- snack
@@ -108,29 +126,32 @@ return {
   -- incline.nvim
   {
     "b0o/incline.nvim",
+    enabled = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("incline").setup()
-      local helpers = require("incline.helpers")
       local devicons = require("nvim-web-devicons")
+
       require("incline").setup({
-        window = {
-          padding = 0,
-          margin = { horizontal = 0 },
+        hide = {
+          only_win = false,
         },
         render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          local bufname = vim.api.nvim_buf_get_name(props.buf)
+          local filename = vim.fn.fnamemodify(bufname, ":t")
           if filename == "" then
             filename = "[No Name]"
           end
-          local ft_icon, ft_color = devicons.get_icon_color(filename)
+
+          local ext = vim.fn.fnamemodify(bufname, ":e")
+          local icon, icon_color = devicons.get_icon(filename, ext, { default = true })
+
           local modified = vim.bo[props.buf].modified
+
           return {
-            ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
+            { " ", icon, " ", guifg = icon_color },
+            { filename, gui = modified and "bold" or "none" },
+            modified and { " [+]", guifg = "#ff9e64" } or "",
             " ",
-            { filename, gui = modified and "bold,italic" or "bold" },
-            " ",
-            guibg = "#82A497",
           }
         end,
       })
