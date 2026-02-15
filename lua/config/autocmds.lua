@@ -18,7 +18,7 @@ api.nvim_create_autocmd("TextYankPost", {
 })
 vim.cmd("let g:netrw_banner = 0")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#11111b" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
 vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
 vim.api.nvim_set_hl(0, "Terminal", { bg = "none" })
