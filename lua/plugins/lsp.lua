@@ -8,9 +8,6 @@ return {
       "j-hui/fidget.nvim",
     },
     config = function()
-      -- ════════════════════════════════════════════════════════════════════
-      -- LSP Keymaps Setup
-      -- ════════════════════════════════════════════════════════════════════
       local function setup_keymaps(bufnr)
         local function map(mode, lhs, rhs, desc)
           vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc, silent = true })
@@ -46,9 +43,6 @@ return {
         end, "Toggle Inlay Hints")
       end
 
-      -- ════════════════════════════════════════════════════════════════════
-      -- LSP Attach Handler
-      -- ════════════════════════════════════════════════════════════════════
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
         callback = function(args)
@@ -60,8 +54,6 @@ return {
 
           setup_keymaps(bufnr)
           vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-          -- Inlay hints disabled by default (toggle with <leader>lh)
 
           -- Document highlight on cursor hold
           if client.server_capabilities.documentHighlightProvider then
@@ -80,9 +72,6 @@ return {
         end,
       })
 
-      -- ════════════════════════════════════════════════════════════════════
-      -- Diagnostic Configuration
-      -- ════════════════════════════════════════════════════════════════════
       vim.diagnostic.config({
         virtual_text = true,
         underline = true,
@@ -91,10 +80,14 @@ return {
         float = { border = "rounded", source = true, header = "", prefix = "" },
         signs = {
           text = {
-            [vim.diagnostic.severity.ERROR] = "󰅚 ",
-            [vim.diagnostic.severity.WARN] = "󰀪 ",
-            [vim.diagnostic.severity.INFO] = "󰋽 ",
-            [vim.diagnostic.severity.HINT] = "󰌶 ",
+            -- [vim.diagnostic.severity.ERROR] = "󰅚 ",
+            -- [vim.diagnostic.severity.WARN] = "󰀪 ",
+            -- [vim.diagnostic.severity.INFO] = "󰋽 ",
+            -- [vim.diagnostic.severity.HINT] = "󰌶 ",
+            [vim.diagnostic.severity.ERROR] = "E ",
+            [vim.diagnostic.severity.WARN] = "W ",
+            [vim.diagnostic.severity.INFO] = "I ",
+            [vim.diagnostic.severity.HINT] = "H ",
           },
           numhl = {
             [vim.diagnostic.severity.ERROR] = "ErrorMsg",
@@ -102,23 +95,6 @@ return {
           },
         },
       })
-
-      -- ════════════════════════════════════════════════════════════════════
-      -- SourceKit-LSP (Swift) - not managed by Mason
-      -- ════════════════════════════════════════════════════════════════════
-      vim.lsp.config("sourcekit", {
-        cmd = { "sourcekit-lsp" },
-        filetypes = { "swift", "objc", "objcpp", "c", "cpp" },
-        root_markers = { "Package.swift", ".git", "compile_commands.json" },
-        capabilities = {
-          workspace = {
-            didChangeWatchedFiles = {
-              dynamicRegistration = true,
-            },
-          },
-        },
-      })
-      vim.lsp.enable("sourcekit")
     end,
   },
 
@@ -187,21 +163,6 @@ return {
             },
           })
         end,
-
-        -- ["intelephense"] = function()
-        --   local get_license = function()
-        --     local f = assert(io.open(os.getenv("HOME") .. "/intelephense/license.txt", "rb"))
-        --     local content = f:read("*a")
-        --     f:close()
-        --     return string.gsub(content, "%s+", "")
-        --   end
-        --   lspconfig.intelephense.setup({
-        --     cmd = { "intelephense", "--stdio" },
-        --     filetypes = { "php", "blade" },
-        --     root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
-        --     init_options = { licenceKey = get_license() },
-        --   })
-        -- end,
       }
 
       mason_lspconfig.setup({ handlers = handlers })
@@ -214,40 +175,13 @@ return {
     config = function()
       require("mason-tool-installer").setup({
         ensure_installed = {
-          -- Language Servers
           "lua_ls",
           "gopls",
-          -- "zls",
-          -- "ts_ls",
-          -- "rust-analyzer",
-          -- "intelephense",
-          -- "bashls",
-          -- "pyright",
-          -- "cssls",
-          -- "html",
-          -- "jsonls",
-          -- "yamlls",
-          -- Linters
-          -- "eslint_d",
-          -- "luacheck",
           "golangci-lint",
           "shellcheck",
-          -- "markdownlint",
-          -- "yamllint",
-          -- "jsonlint",
-          -- "htmlhint",
-          -- "stylelint",
-          -- "phpstan",
-          -- "ruff",
-          -- "mypy",
-          -- Formatters
           "stylua",
           "goimports",
-          -- "prettier",
-          -- "black",
-          -- "isort",
           "shfmt",
-          -- "pint",
         },
       })
     end,

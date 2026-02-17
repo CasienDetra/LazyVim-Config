@@ -1,18 +1,18 @@
 return {
+  -- this config is from sin-cy github
   -- nvim-cmp
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
-    branch = "main", -- fix for deprecated functions coming in nvim 0.13
+    branch = "main",
     dependencies = {
-      "hrsh7th/cmp-buffer", -- source for text in buffer
-      "hrsh7th/cmp-path", -- source for file system paths
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "f3fora/cmp-spell",
       {
         "L3MON4D3/LuaSnip",
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
+        version = "v2.*",
         build = "make install_jsregexp",
       },
       "saadparwaiz1/cmp_luasnip", -- autocompletion
@@ -217,7 +217,6 @@ return {
         cmp.confirm({ select = false, behavior = behavior })
       end
 
-      -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
       require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup.cmdline(":", {
@@ -239,11 +238,8 @@ return {
         experimental = {
           -- HACK: experimenting with ghost text
           -- look at `toggle_ghost_text()` function below.
-          ghost_text = true,
+          ghost_text = false,
         },
-        -- completion = {
-        --   completeopt = "menu,menuone,noinsert",
-        -- },
         window = {
           documentation = {
             border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -277,15 +273,6 @@ return {
             },
           },
         }),
-        -- mapping = cmp.mapping.preset.insert({
-        --     ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-        --     ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
-        --     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        --     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        --     ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-        --     ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-        --     ["<CR>"] = cmp.mapping.confirm({ select = false }),
-        -- }),
         mapping = cmp.mapping.preset.insert({
           ["<BS>"] = cmp.mapping(function(_fallback)
             smart_bs()
@@ -296,6 +283,7 @@ return {
             cmp.close_docs()
           end, { "i", "s" }),
 
+          ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-n>"] = cmp.mapping(select_next_item),
@@ -311,6 +299,9 @@ return {
           end, { "i", "s" }),
 
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
+
+          -- if you like to always select on the the first cmp undo comment
+
           -- ["<CR>"] = cmp.mapping(function(fallback)
           --   if cmp.visible() then
           --     local entry = cmp.get_selected_entry()
@@ -333,7 +324,6 @@ return {
               fallback()
             end
           end, { "i", "s" }),
-
           ["<Tab>"] = cmp.mapping(function(_fallback)
             if cmp.visible() then
               -- if there is only one completion candidate then use it.

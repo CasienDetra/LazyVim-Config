@@ -72,8 +72,6 @@ return {
       local mode = {
         "mode",
         fmt = function(str)
-          -- return ' '
-          -- displays only the first character of the mode
           -- return " " .. str
           return " " .. str
         end,
@@ -98,9 +96,7 @@ return {
         icons_enabled = true,
         options = {
           theme = "auto",
-          -- component_separators = { left = "|", right = "|" },
           component_separators = { left = "", right = "" },
-          -- section_separators = { left = "|", right = "" },
           section_separators = { left = "", right = "" },
         },
         sections = {
@@ -150,7 +146,7 @@ return {
           return {
             { " ", icon, " ", guifg = icon_color },
             { filename, gui = modified and "bold" or "none" },
-            modified and { " [+]", guifg = "#ff9e64" } or "",
+            modified and { " [+]", guifg = "#ffbe64" } or "",
             " ",
           }
         end,
@@ -199,7 +195,7 @@ return {
       vim.opt.listchars:append("eol:↴")
     end,
   },
-  -- gdelete = { text = "󰍵" }itsigns
+  -- gitsigns
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
