@@ -53,4 +53,29 @@ return {
       },
     },
   },
+  -- kang
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      colors = {
+        theme_bg = "#1f1f28",
+      },
+    },
+  },
+  -- rose pine
+  -- lua/plugins/rose-pine.lua
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      require("rose-pine").setup({
+        dark_variant = "dawn",
+        disable_background = true,
+        transparent = true,
+      })
+    end,
+  },
 }
