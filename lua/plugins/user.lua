@@ -65,10 +65,46 @@ return {
     config = function()
       local lualine = require("lualine")
       local lazy_status = require("lazy.status") -- to configure lazy pending updates count
-
+      local colors = {
+        color0 = "#282828", -- bg
+        color1 = "#cc241d", -- red
+        color2 = "#E4D5AD", -- green
+        color3 = "#3E3B39", -- yellow
+        color6 = "#458588", -- blue
+        color7 = "#a89984", -- fg
+        color8 = "#b16286", -- purple
+        color9 = "#524B49", -- purple
+      }
       -- +-------------------------------------------------+
       -- | A | B | C                             X | Y | Z |
       -- +-------------------------------------------------+
+      local custom = {
+        replace = {
+          a = { fg = colors.color0, bg = colors.color1 },
+          b = { fg = colors.color2, bg = colors.color3 },
+        },
+        inactive = {
+          a = { fg = colors.color6, bg = colors.color3 },
+          b = { fg = colors.color6, bg = colors.color3 },
+          c = { fg = colors.color6, bg = colors.color3 },
+        },
+        normal = {
+          a = { fg = colors.color0, bg = colors.color7 },
+          b = { fg = colors.color2, bg = colors.color9 },
+          c = { fg = colors.color2, bg = colors.color3 },
+        },
+        visual = {
+          a = { fg = colors.color0, bg = colors.color7 },
+          b = { fg = colors.color2, bg = colors.color9 },
+          c = { fg = colors.color2, bg = colors.color3 },
+        },
+        insert = {
+          a = { fg = colors.color0, bg = colors.color7 },
+          b = { fg = colors.color2, bg = colors.color9 },
+          c = { fg = colors.color2, bg = colors.color3 },
+        },
+      }
+
       local mode = {
         "mode",
         fmt = function(str)
@@ -95,7 +131,7 @@ return {
       lualine.setup({
         icons_enabled = true,
         options = {
-          theme = "auto",
+          theme = custom,
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
         },
