@@ -32,6 +32,8 @@ vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#f2cdcd" })
 vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
 vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = "none" })
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#888888", bg = "#222222" })
+vim.api.nvim_set_hl(0, "LineNrbove", { fg = "#888888", bg = "#222222" })
 vim.api.nvim_set_hl(0, "CmpBorder", {
   fg = "#11111b",
   bg = "#11111b",
