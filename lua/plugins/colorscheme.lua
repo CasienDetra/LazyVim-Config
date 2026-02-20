@@ -118,4 +118,29 @@ return {
       })
     end,
   },
+  -- vesper
+  {
+    "datsfilipe/vesper.nvim",
+    priority = 1000, -- load early
+    config = function()
+      require("vesper").setup({
+        transparent = true,
+
+        italics = {
+          comments = true,
+          keywords = true,
+          functions = true,
+          strings = true,
+          variables = true,
+        },
+
+        overrides = {},
+
+        palette_overrides = {},
+      })
+
+      -- apply colorscheme
+      -- vim.cmd("colorscheme vesper")
+    end,
+  },
 }
