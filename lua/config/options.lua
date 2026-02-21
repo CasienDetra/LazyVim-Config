@@ -1,7 +1,5 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
 -- vim.g.lazyvim_cmp = "blink.cmp"
+vim.opt.guicursor = "n-v-i-c:block-Cursor"
 vim.o.pumblend = 0
 vim.o.winblend = 0
 vim.opt.clipboard = "unnamedplus"
@@ -21,15 +19,13 @@ vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.expandtab = true
 
--- vim.opt.number =
--- vim.opt.relativenumber = false
 vim.diagnostic.config({
-  virtual_lines = true,
+  virtual_lines = false,
 })
 vim.opt.fillchars =
   { vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " }
---neovide
 
+--neovide
 if vim.g.neovide then
   vim.o.guifont = "IosevkaTerm Nerd Font:h18" -- text below applies for VimScript
   vim.g.neovide_window_blurred = true
@@ -37,6 +33,4 @@ if vim.g.neovide then
   vim.g.neovide_normal_opacity = 0.8
   vim.g.neovide_title_background_color =
     string.format("%x", vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg)
-
-  vim.g.neovide_title_text_color = "pink"
 end
