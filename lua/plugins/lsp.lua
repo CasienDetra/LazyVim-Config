@@ -177,7 +177,7 @@ return {
         ensure_installed = {
           "lua_ls",
           "gopls",
-          -- "golangci-lint",
+          "golangci-lint",
           "shellcheck",
           "stylua",
           "goimports",
