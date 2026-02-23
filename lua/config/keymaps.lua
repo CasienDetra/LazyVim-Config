@@ -18,3 +18,6 @@ vim.keymap.set("v", "<M-down>", "xk`[V`]`")
 vim.keymap.set("n", "-", function()
   vim.cmd("Ex")
 end)
+
+-- use ALT + A when in insert mode to append
+vim.keymap.set("i", "<M-a>", "<C-o>l", { noremap = true })
