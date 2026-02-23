@@ -121,26 +121,29 @@ return {
   -- vesper
   {
     "datsfilipe/vesper.nvim",
-    priority = 1000, -- load early
     config = function()
+      local mix = require("vesper.utils").mix
+      local p = require("vesper.colors")
+
       require("vesper").setup({
         transparent = true,
-
-        italics = {
-          comments = true,
-          keywords = true,
-          functions = true,
-          strings = true,
-          variables = true,
+        palette_overrides = {
+          fg = mix("#F4F4F4", "#000000", math.abs(0.90)),
+          primary = mix("#FFFFFF", "#000000", math.abs(0.90)),
+          purple = "#FBAD0F",
         },
+        overrides = {
+          Keyword = { fg = p.purple },
+          Operator = { fg = p.purple },
+          ["@punctuation.separator.keyvalue"] = { fg = p.purple },
 
-        overrides = {},
+          -- tsx
+          ["@import.identifier.tsx"] = { fg = p.fg },
 
-        palette_overrides = {},
+          -- typescript
+          ["@import.identifier.typescript"] = { fg = p.fg },
+        },
       })
-
-      -- apply colorscheme
-      -- vim.cmd("colorscheme vesper")
     end,
   },
 }
