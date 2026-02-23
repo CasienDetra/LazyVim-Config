@@ -131,7 +131,7 @@ return {
       lualine.setup({
         icons_enabled = true,
         options = {
-          theme = custom,
+          theme = "auto",
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
         },

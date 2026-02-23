@@ -71,3 +71,9 @@ vim.api.nvim_set_hl(0, "VisualNOS", {
   bg = "black",
   underline = true,
 })
+-- since it does not apply again after change colorscheme we need this
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    vim.api.nvim_set_hl(0, "Visual", { reverse = true })
+  end,
+})
