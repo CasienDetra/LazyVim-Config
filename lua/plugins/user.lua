@@ -194,9 +194,10 @@ return {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     options = {
-      options = {
-        separator_style = { "", "" },
-      },
+      mode = "tabs",
+      separator_style = "slant",
+      show_buffer_close_icons = false,
+      show_close_icon = false,
     },
     keys = {
       { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
