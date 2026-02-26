@@ -1,4 +1,5 @@
 return {
+  -- tokyonight
   {
     "folke/tokyonight.nvim",
     name = "folkeTokyonight",
@@ -144,6 +145,15 @@ return {
           ["@import.identifier.typescript"] = { fg = p.fg },
         },
       })
+    end,
+  },
+  -- miasma
+  {
+    "xero/miasma.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- vim.cmd("colorscheme miasma")
     end,
   },
 }
