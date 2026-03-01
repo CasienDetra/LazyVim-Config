@@ -46,51 +46,44 @@ return {
   -- catppuccin
   {
     "catppuccin/nvim",
+    lazy = true,
     name = "catppuccin",
-    lazy = false,
-    priority = 1000,
-    build = ":CatppuccinCompile",
-    enabled = true,
     opts = {
-      flavour = "macchiato",
-      background = { light = "latte", dark = "macchiato" },
+      lsp_styles = {
+        underlines = {
+          errors = { "undercurl" },
+          hints = { "undercurl" },
+          warnings = { "undercurl" },
+          information = { "undercurl" },
+        },
+      },
+      flavour = "mocha",
       transparent_background = true,
-      float = { transparent = true, solid = true },
-      term_colors = true,
-      custom_highlights = function(C)
-        local O = require("catppuccin").options
+      dim_inactive = {
+        enabled = false,
+      },
+      custom_highlights = function(colors)
         return {
-          ["@module"] = { fg = C.lavender, style = O.styles.miscs or { "italic" } },
-          ["@type.builtin"] = { fg = C.yellow, style = O.styles.properties or { "italic" } },
-          ["@property"] = { fg = C.lavender, style = O.styles.properties or {} },
+          FloatBorder = { fg = colors.lavender, bg = colors.mantle },
+          NormalFloat = { bg = colors.mantle },
+          WinSeparator = { fg = colors.surface1 },
+          -- Comment = { fg = colors.flamingo },
+          TabLineSel = { bg = colors.pink },
+          CmpBorder = { fg = colors.surface2 },
+          Directory = { fg = colors.red },
+          FolderIcon = { fg = colors.blue }, -- Pmenu = { bg = colors.none },
         }
       end,
-      integrations = {
-        bufferline = false,
-        cmp = true,
-        fidget = true,
-        gitsigns = true,
-        illuminate = true,
-        indent_blankline = { enabled = true },
-        lsp_trouble = true,
-        markdown = true,
-        mason = true,
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
-          },
-        },
-        neotree = true,
-        noice = true,
-        notify = true,
-        rainbow_delimiters = true,
-        telescope = true,
-        treesitter = true,
-        treesitter_context = true,
+    },
+    specs = {
+      {
+        "akinsho/bufferline.nvim",
+        optional = true,
+        opts = function(_, opts)
+          if (vim.g.colors_name or ""):find("catppuccin") then
+            opts.highlights = require("catppuccin.special.bufferline").get_theme()
+          end
+        end,
       },
     },
   },
@@ -152,8 +145,27 @@ return {
     "xero/miasma.nvim",
     lazy = false,
     priority = 1000,
+    config = function() end,
+  },
+  -- vague
+  {
+    "vague-theme/vague.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other plugins
     config = function()
-      -- vim.cmd("colorscheme miasma")
+      require("vague").setup({
+        transparent = true,
+      })
+    end,
+  },
+  -- zenburned
+  {
+    "zenbones-theme/zenbones.nvim",
+    dependencies = "rktjmp/lush.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      transparent_background = true
     end,
   },
 }
