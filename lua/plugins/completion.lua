@@ -111,6 +111,7 @@ return {
       --   Value = " ",
       --   Variable = "󰀫 ",
       -- }
+
       -- Returns the current column number.
       local column = function()
         local _line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -359,21 +360,20 @@ return {
               fallback()
             end
           end, { "i", "s" }),
-          ["<Tab>"] = cmp.mapping(function(_fallback)
+          ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-              -- if there is only one completion candidate then use it.
-              local entries = cmp.get_entries()
-              if #entries == 1 then
-                confirm(entries[1])
+              local entry = cmp.get_selected_entry()
+              if not entry then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
               else
-                cmp.select_next_item()
+                confirm(entry)
               end
             elseif has_luasnip and luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
             elseif in_whitespace() then
               smart_tab()
             else
-              cmp.complete()
+              fallback()
             end
           end, { "i", "s" }),
         }),
