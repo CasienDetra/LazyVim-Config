@@ -31,8 +31,7 @@ return {
           {
             -- This inner table creates a horizontal layout (panes)
             { section = "header" },
-            -- { -- right Column: Menu -- icon = " ", -- title = "Menu", section =
-            -- "keys", pane = 1, gap = 1, padding = 1, },
+
             {
               -- left Column: ASCII Art (terminak with ascii-image-converter)
               pane = 2,

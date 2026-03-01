@@ -23,8 +23,18 @@ return {
   {
     "stevearc/conform.nvim",
     opts = {
+      optinal = true,
       formatters_by_ft = {
         php = { "pint" },
+        go = { "goimports", "gofumpt" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
+        lua = { "stylua" },
+        fish = { "fish_indent" },
+        sh = { "shfmt" },
+      },
+      formatters = {
+        injected = { options = { ignore_errors = true } },
       },
     },
   },
