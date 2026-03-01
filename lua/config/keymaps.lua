@@ -21,3 +21,12 @@ end)
 
 -- use ALT + A when in insert mode to append
 vim.keymap.set("i", "<M-a>", "<C-o>l", { noremap = true })
+
+-- Resize splits window
+vim.keymap.set("n", "<C-S-h>", "<C-w><")
+vim.keymap.set("n", "<C-S-l>", "<C-w>>")
+vim.keymap.set("n", "<C-S-k>", "<C-w>+")
+vim.keymap.set("n", "<C-S-j>", "<C-w>-")
+
+-- basically don't register text when use x
+vim.keymap.set("n", "x", '"_x')
