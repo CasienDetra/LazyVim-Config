@@ -16,7 +16,7 @@ vim.opt.fillchars = {
 }
 
 vim.opt.list = true
-vim.opt.listchars = "tab:¬·,trail:•,extends:►,eol:↴,precedes:◄,nbsp:·"
+vim.opt.listchars = "tab:¬·,trail:•,extends:►,eol:↴,space:·,precedes:◄,nbsp:·"
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.opt.softtabstop = 4
