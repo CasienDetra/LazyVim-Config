@@ -30,3 +30,11 @@ vim.keymap.set("n", "<C-S-j>", "<C-w>-")
 
 -- basically don't register text when use x
 vim.keymap.set("n", "x", '"_x')
+
+-- enable and disable the diagnostic
+vim.keymap.set("n", "<leader>xd", function()
+  vim.diagnostic.disable()
+end)
+vim.keymap.set("n", "<leader>xD", function()
+  vim.diagnostic.enable()
+end)

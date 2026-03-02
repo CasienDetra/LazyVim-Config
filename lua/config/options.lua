@@ -14,16 +14,21 @@ vim.opt.cmdheight = 0
 vim.opt.fillchars = {
   eob = "~",
 }
-vim.o.list = false
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.expandtab = true
+
+vim.opt.list = true
+vim.opt.listchars = "tab:¬·,trail:•,extends:►,eol:↴,precedes:◄,nbsp:·"
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.opt.softtabstop = 4
+
+-- NOTE: since i want listchar (the option tab ) i have to disable this
+-- vim.o.expandtab = true
 
 vim.diagnostic.config({
   virtual_lines = false,
 })
-vim.opt.fillchars =
-  { vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " }
+-- vim.opt.fillchars =
+--   { vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " }
 
 --neovide
 if vim.g.neovide then
