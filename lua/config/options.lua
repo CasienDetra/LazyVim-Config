@@ -10,13 +10,14 @@ vim.opt.smartcase = true -- Case sensitive if uppercase in search
 vim.opt.smartindent = true -- Case sensitive if uppercase in search
 vim.opt.hlsearch = true -- Don't highlight search results
 vim.opt.shortmess:append("c")
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
+vim.opt.showmode = true
 vim.opt.fillchars = {
   eob = "~",
 }
 
 vim.opt.list = true
-vim.opt.listchars = "tab:¬·,trail:•,extends:►,eol:↴,space:·,precedes:◄,nbsp:·"
+vim.opt.listchars = "tab:¬·,trail:•,extends:►,space:·,precedes:◄,nbsp:·"
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.opt.softtabstop = 4

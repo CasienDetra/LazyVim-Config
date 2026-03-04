@@ -1,4 +1,14 @@
 return {
+{
+  "nvim-mini/mini.indentscope",
+  version = false, -- wait till new 0.7.0 release to put it back on semver
+  event = "LazyFile",
+  opts = {
+    -- symbol = "▏",
+    symbol = "┆",
+    options = { try_as_border = true },
+  },
+},
   -- disable noice cmdline
   {
     "folke/noice.nvim",
@@ -19,8 +29,6 @@ return {
       })
     end,
   },
-  -- rainbow bracket
-  { "HiPhish/rainbow-delimiters.nvim", event = { "BufReadPre", "BufNewFile" }, config = function() end },
   -- snack
   {
     "folke/snacks.nvim",
@@ -49,11 +57,6 @@ return {
       -- indent
       indent = {
         enabled = false,
-        only_scope = true,
-        char = "",
-        chunk = {
-          enable = true,
-        },
       },
     },
   },
