@@ -362,12 +362,15 @@ return {
           end, { "i", "s" }),
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-              local entry = cmp.get_selected_entry()
-              if not entry then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-              else
-                confirm(entry)
-              end
+			-- the behavior to dont select next item if there an item that is already selected 
+              -- local entry = cmp.get_selected_entry()
+              -- if not entry then
+              --   cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+              -- else
+              --   confirm(entry)
+              -- end
+							-- NOTE:if wanted to just tab no select next item 
+              cmp.select_next_item()
             elseif has_luasnip and luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
             elseif in_whitespace() then

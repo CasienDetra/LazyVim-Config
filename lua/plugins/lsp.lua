@@ -178,7 +178,7 @@ return {
           "lua_ls",
           "tinymist",
           "gopls",
-          "golangci-lint",
+          -- "golangci-lint",
           "shellcheck",
           "stylua",
           "goimports",
