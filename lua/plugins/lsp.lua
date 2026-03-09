@@ -185,4 +185,24 @@ return {
             })
         end,
     },
+    {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        event = "VeryLazy",
+        priority = 1000,
+        config = function()
+            require("tiny-inline-diagnostic").setup({
+                preset = "amongus",
+                show_source = { enabled = true },
+                multilines = { enabled = true },
+                use_icons_from_diagnostic = true,
+                show_all_diags_on_cursorline = true,
+                -- Only show diagnostics when the cursor is directly over them, no fallback to line diagnostics
+                show_diags_only_under_cursor = false,
+                signs = {
+                    diag = "λ",
+                },
+            })
+            vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+        end,
+    },
 }
