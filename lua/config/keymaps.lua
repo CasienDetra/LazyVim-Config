@@ -16,7 +16,7 @@ vim.keymap.set("v", "<M-up>", "xkP`[V`]")
 vim.keymap.set("v", "<M-down>", "xk`[V`]`")
 -- use - to explore
 vim.keymap.set("n", "-", function()
-  vim.cmd("Ex")
+    vim.cmd("Ex")
 end)
 
 -- use ALT + A when in insert mode to append
@@ -30,11 +30,7 @@ vim.keymap.set("n", "<C-S-j>", "<C-w>-")
 
 -- basically don't register text when use x
 vim.keymap.set("n", "x", '"_x')
-
--- enable and disable the diagnostic
-vim.keymap.set("n", "<leader>xd", function()
-  vim.diagnostic.disable()
-end)
-vim.keymap.set("n", "<leader>xD", function()
-  vim.diagnostic.enable()
+-- some fzflua keybinds
+vim.keymap.set("n", "<leader>fw", function()
+    require("fzf-lua").grep()
 end)
