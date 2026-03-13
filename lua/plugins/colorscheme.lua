@@ -40,7 +40,18 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      transparent = true,
+  transparent = true,
+  terminal_colors = true,
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = true },
+    functions = {},
+    variables = {},
+    -- Background styles. Can be "dark", "transparent" or "normal"
+    sidebars = "transparent", -- style for sidebars, see below
+    floats = "transparent", -- style for floating windows
+  },
+  lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
     },
   },
   -- catppuccin
