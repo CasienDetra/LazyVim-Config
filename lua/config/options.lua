@@ -1,5 +1,5 @@
 -- vim.g.lazyvim_cmp = "blink.cmp"
-vim.opt.guicursor = "n-v-i-c:block-Cursor"
+-- vim.opt.guicursor = "n-v-i-c:block-Cursor"
 vim.o.pumblend = 0
 vim.o.winblend = 0
 vim.opt.clipboard = "unnamedplus"
@@ -13,7 +13,7 @@ vim.opt.shortmess:append("c")
 vim.opt.cmdheight = 1
 vim.opt.showmode = true
 vim.opt.fillchars = {
-  eob = "~",
+    eob = "~",
 }
 
 vim.opt.list = true
@@ -26,17 +26,17 @@ vim.opt.softtabstop = 4
 -- vim.o.expandtab = true
 
 vim.diagnostic.config({
-  virtual_lines = false,
+    virtual_lines = false,
 })
 -- vim.opt.fillchars =
 --   { vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " }
 
 --neovide
 if vim.g.neovide then
-  vim.o.guifont = "IosevkaTerm Nerd Font:h18" -- text below applies for VimScript
-  vim.g.neovide_window_blurred = true
-  vim.g.neovide_opacity = 0.8
-  vim.g.neovide_normal_opacity = 0.8
-  vim.g.neovide_title_background_color =
-    string.format("%x", vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg)
+    vim.o.guifont = "IosevkaTerm Nerd Font:h18" -- text below applies for VimScript
+    vim.g.neovide_window_blurred = true
+    vim.g.neovide_opacity = 0.8
+    vim.g.neovide_normal_opacity = 0.8
+    vim.g.neovide_title_background_color =
+        string.format("%x", vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg)
 end
