@@ -30,7 +30,3 @@ vim.keymap.set("n", "<C-S-j>", "<C-w>-")
 
 -- basically don't register text when use x
 vim.keymap.set("n", "x", '"_x')
--- some fzflua keybinds
-vim.keymap.set("n", "<leader>fw", function()
-    require("fzf-lua").grep()
-end)
