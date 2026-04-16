@@ -275,6 +275,8 @@ return {
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-n>"] = cmp.mapping(select_next_item),
                     ["<C-p>"] = cmp.mapping(select_prev_item),
+                    ["<C-j>"] = cmp.mapping(select_next_item),
+                    ["<C-k>"] = cmp.mapping(select_prev_item),
 
                     ["<C-y>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
@@ -358,12 +360,12 @@ return {
 
                         return vim_item
                     end,
-                    -- format = lspkind.cmp_format({
-                    --         maxwidth = 30,
-                    --         ellipsis_char = "...",
-                    --         before = require("tailwindcss-colorizer-cmp").formatter
-                    -- }),
-                    -- format = require("tailwindcss-colorizer-cmp").formatter
+                    format = lspkind.cmp_format({
+                        maxwidth = 30,
+                        ellipsis_char = "...",
+                        before = require("tailwindcss-colorizer-cmp").formatter,
+                    }),
+                    format = require("tailwindcss-colorizer-cmp").formatter,
                 },
             })
             -- add diff source for one filetype
