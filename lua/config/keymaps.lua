@@ -20,7 +20,8 @@ vim.keymap.set("n", "-", function()
 end)
 
 -- use ALT + A when in insert mode to append
-vim.keymap.set("i", "<M-a>", "<C-o>l", { noremap = true })
+vim.keymap.set("i", "<M-l>", "<C-o>l", { noremap = true })
+vim.keymap.set("i", "<M-h>", "<C-o>h", { noremap = true })
 
 -- Resize splits window
 vim.keymap.set("n", "<C-S-h>", "<C-w><")
