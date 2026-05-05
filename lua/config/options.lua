@@ -16,6 +16,7 @@ vim.opt.fillchars = {
     eob = "~",
 }
 
+vim.opt.colorcolumn = "80"
 vim.opt.list = true
 vim.opt.listchars = "tab:¬·,trail:•,extends:►,space:·,precedes:◄,nbsp:·"
 vim.o.shiftwidth = 4
