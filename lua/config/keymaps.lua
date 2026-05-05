@@ -16,7 +16,7 @@ vim.keymap.set("v", "<M-up>", "xkP`[V`]")
 vim.keymap.set("v", "<M-down>", "xk`[V`]`")
 -- use - to explore
 vim.keymap.set("n", "-", function()
-    vim.cmd("Ex")
+    vim.cmd("Oil")
 end)
 
 -- use ALT + A when in insert mode to append
