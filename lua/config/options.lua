@@ -1,6 +1,19 @@
 -- vim.g.lazyvim_cmp = "blink.cmp"
--- vim.opt.guicursor = "n-v-i-c:block-Cursor"
+
+-- blink cursor
+vim.opt.guicursor = {
+    "n-sm:block",
+    "v:hor50",
+    "c-ci-cr-i-ve:ver10",
+    "o-r:hor10",
+    "a:Cursor/Cursor-blinkwait1-blinkon1-blinkoff1",
+}
+
+vim.o.breakindent = true
+vim.o.breakindentopt = "list:-1"
+vim.o.cindent = true
 vim.o.pumblend = 0
+vim.o.list = true
 vim.o.winblend = 0
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = "menuone,noinsert" -- Completion options
@@ -14,23 +27,35 @@ vim.opt.cmdheight = 1
 vim.opt.showmode = true
 vim.opt.fillchars = {
     eob = "~",
+    diff = "╱",
+    fold = " ",
+    foldsep = " ",
+    msgsep = "━",
+    horiz = "━",
+    horizup = "┻",
+    horizdown = "┳",
+    vert = "┃",
+    vertleft = "┫",
+    vertright = "┣",
+    verthoriz = "╋",
 }
 
-vim.opt.colorcolumn = "80"
-vim.opt.list = true
-vim.opt.listchars = "tab:¬·,trail:•,extends:►,space:·,precedes:◄,nbsp:·"
+vim.opt.colorcolumn = "+0"
+vim.opt.listchars = "tab:¬·,trail:·,extends:►,space:·,precedes:◄,nbsp:␣"
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.opt.softtabstop = 4
+vim.opt.formatlistpat = table.concat({
+    [[^\s*\d\+[\]:.)}\t ]\s*]],
+    [[^\s*\w\+[\]:.)}\t ]\s\+]],
+    [[^\s*>\s]],
+}, [[\|]])
 
--- NOTE: since i want listchar (the option tab ) i have to disable this
--- vim.o.expandtab = true
+vim.o.expandtab = true
 
 vim.diagnostic.config({
     virtual_lines = false,
 })
--- vim.opt.fillchars =
---   { vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " }
 
 --neovide
 if vim.g.neovide then
