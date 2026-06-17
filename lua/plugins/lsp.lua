@@ -75,11 +75,44 @@ return {
             })
 
             vim.diagnostic.config({
-                virtual_text = true,
                 underline = true,
                 update_in_insert = false,
                 severity_sort = true,
-                float = { border = "rounded", source = true, header = "", prefix = "" },
+                virtual_text = {
+                    prefix = "",
+                    format = function(diag)
+                        local clean_src_names = {
+                            ["Lua Diagnostics."] = "lua",
+                            ["Lua Syntax Check."] = "lua",
+                        }
+
+                        local msg
+                        if not diag.code then
+                            return " "
+                        end
+
+                        msg = diag.message
+
+                        if diag.source then
+                            msg = string.format("%s [%s]", msg, clean_src_names[diag.source] or diag.source)
+                        end
+
+                        return msg
+                    end,
+                },
+                float = {
+                    border = "rounded",
+                    source = "if_many",
+                    header = " ",
+                    title = " Diagnostics ",
+                    prefix = function(diag)
+                        local lsp_sym = lsp_signs[diag.severity].sym
+                        local prefix = string.format(" %s  ", lsp_sym)
+                        local severity = vim.diagnostic.severity[diag.severity]
+                        local diag_hl_name = severity:sub(1, 1) .. severity:sub(2):lower()
+                        return prefix, "Diagnostic" .. diag_hl_name:gsub("^%l", string.upper)
+                    end,
+                },
                 signs = {
                     text = {
                         [vim.diagnostic.severity.ERROR] = "",
@@ -177,31 +210,4 @@ return {
             })
         end,
     },
-    -- {
-    --     "rachartier/tiny-inline-diagnostic.nvim",
-    --     event = "VeryLazy",
-    --     priority = 1000,
-    --     config = function()
-    --         require("tiny-inline-diagnostic").setup({
-    --             preset = "powerline",
-    --             show_source = { enabled = true },
-    --             multilines = { enabled = true, always_show = true },
-    --             use_icons_from_diagnostic = true,
-    --             show_all_diags_on_cursorline = true,
-    --             -- Only show diagnostics when the cursor is directly over them, no fallback to line diagnostics
-    --             show_diags_only_under_cursor = false,
-    --             set_arrow_to_diag_color = false,
-    --             signs = {
-    --                 left = "",
-    --                 right = "",
-    --                 diag = "λ",
-    --                 arrow = "  ",
-    --                 up_arrow = "  ",
-    --                 vertical = " │",
-    --                 vertical_end = " ╰>",
-    --             },
-    --         })
-    --         vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
-    --     end,
-    -- },
 }

@@ -1,50 +1,23 @@
 return {
-  -- copilot
-  {
-    "zbirenbaum/copilot.lua",
-    opts = {
-      suggestion = {
-        auto_trigger = true,
-        keymap = {
-          accept = "<C-l>",
-          accept_word = "<M-l>",
-          accept_line = "<M-S-l>",
-          next = "<M-]>",
-          prev = "<M-[>",
-          dismiss = "<C-]>",
-        },
-      },
-      filetypes = {
-        markdown = true,
-        help = true,
-      },
-    },
-  },
-  -- opencode
-  {
-    "sudo-tee/opencode.nvim",
-    config = function()
-      require("opencode").setup({})
-    end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
+    -- copilot
+    {
+        "zbirenbaum/copilot.lua",
         opts = {
-          anti_conceal = { enabled = false },
-          file_types = { "markdown", "opencode_output" },
+            suggestion = {
+                auto_trigger = true,
+                keymap = {
+                    accept = "<C-l>",
+                    accept_word = "<M-l>",
+                    accept_line = "<M-S-l>",
+                    next = "<M-]>",
+                    prev = "<M-[>",
+                    dismiss = "<C-]>",
+                },
+            },
+            filetypes = {
+                markdown = true,
+                help = true,
+            },
         },
-        ft = { "markdown", "Avante", "copilot-chat", "opencode_output" },
-      },
-      -- Optional, for file mentions and commands completion, pick only one
-      -- "saghen/blink.cmp",
-      "hrsh7th/nvim-cmp",
-
-      -- Optional, for file mentions picker, pick only one
-      -- "folke/snacks.nvim",
-      -- 'nvim-telescope/telescope.nvim',
-      "ibhagwan/fzf-lua",
-      -- 'nvim_mini/mini.nvim',
     },
-  },
 }
