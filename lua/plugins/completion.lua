@@ -232,7 +232,8 @@ return {
                         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
                     },
                     completion = {
-                        border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+                        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+                        -- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
                     },
                 },
                 -- config nvim cmp to work with snippet engine
