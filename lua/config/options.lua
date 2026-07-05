@@ -42,7 +42,7 @@ opt.fillchars = {
 }
 
 opt.colorcolumn = "+0"
--- opt.listchars = "tab:¬·,trail:·,extends:►,space:·,precedes:◄,nbsp:␣"
+opt.listchars = "tab:¬·,trail:·,extends:►,space:·,precedes:◄,nbsp:␣"
 o.shiftwidth = 4
 o.tabstop = 4
 opt.softtabstop = 4
