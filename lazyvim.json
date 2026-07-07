@@ -9,7 +9,8 @@
     "lazyvim.plugins.extras.editor.navic",
     "lazyvim.plugins.extras.editor.neo-tree",
     "lazyvim.plugins.extras.lang.go",
-    "lazyvim.plugins.extras.lsp.none-ls"
+    "lazyvim.plugins.extras.lsp.none-ls",
+    "lazyvim.plugins.extras.ui.edgy"
   ],
   "install_version": 8,
   "news": {
